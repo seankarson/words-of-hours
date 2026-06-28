@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Words of Hours</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Cinzel+Decorative:wght@400;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="vignette"></div>
+
+  <main class="stage">
+    <button class="nav nav-prev" id="prevBtn" aria-label="Previous page">&#10094;</button>
+
+    <div class="book-shadow">
+      <div class="book" id="book" aria-live="polite">
+        <!-- pages injected by js/book.js -->
+      </div>
+    </div>
+
+    <button class="nav nav-next" id="nextBtn" aria-label="Next page">&#10095;</button>
+  </main>
+
+  <div class="scrubber">
+    <input type="range" id="pageSlider" min="0" max="0" value="0" step="1" aria-label="Jump to page" />
+  </div>
+
+  <script src="js/book.js"></script>
+</body>
+</html>
