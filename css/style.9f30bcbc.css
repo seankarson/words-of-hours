@@ -305,6 +305,17 @@ body {
   max-width: 34ch;
   font-size: clamp(13px, 1.7vw, 18px);
 }
+.end .cipher {
+  position: absolute;
+  bottom: clamp(20px, 5%, 46px);
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: "Cinzel Decorative", serif;
+  color: var(--ink-soft);
+  font-size: clamp(13px, 1.7vw, 20px);
+  letter-spacing: 0.12em;
+}
 
 /* ---------- navigation ---------- */
 .nav {

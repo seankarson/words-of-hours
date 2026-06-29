@@ -76,7 +76,8 @@ function buildVisual(i) {
     s.innerHTML = `
       <div class="flourish">${DIVIDER} &#10047; ${DIVIDER}</div>
       <div class="endmark">Fin</div>
-      <div class="flourish">${FLOURISH}</div>`;
+      <div class="flourish">${FLOURISH}</div>
+      <div class="cipher">8 • 6 • 5 • 5 &rarr; 5 • 1 6 • 4 • 3</div>`;
     return s;
   }
 
