@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!-- Source page used to generate images/social-card.jpg (the link-preview image).
+     Regenerate with the headless-Chrome command in README. Not linked from the book. -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Cinzel+Decorative:wght@400;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    html, body {
+      margin: 0; padding: 0; background: #000;
+      display: block; min-height: 0; gap: 0;
+    }
+    .ogwrap { width: 1200px; height: 630px; position: relative; overflow: hidden; }
+    .ogwrap .book { width: 1200px; height: 630px; aspect-ratio: auto; }
+    /* shrink the cover composition so everything fits the 1.91:1 card */
+    .ogwrap .cover h1 { font-size: 72px; margin: 0.05em 0 0; }
+    .ogwrap .cover-inner { padding: 34px 64px; }
+    .ogwrap .cover .bylines { gap: 0.06em; font-size: 19px; }
+    .ogwrap .cover .subtitle { font-size: 16px; margin-top: 0.5em; }
+  </style>
+</head>
+<body>
+  <div class="ogwrap">
+    <div class="book">
+      <div class="page">
+        <div class="sheet cover">
+          <div class="cover-img" style="background-image:url('images/cover-image.jpg')"></div>
+          <div class="scrim"></div>
+          <div class="cover-frame"></div>
+          <div class="cover-inner">
+            <h1>Words of Hours</h1>
+            <div class="bylines">
+              <span class="byline"><b>Stories by Mother Goose</b></span>
+              <span class="byline">Illustrations by Nano Banana</span>
+              <p class="subtitle">Featuring fan-favorite nursery rhyme classics<br />like <em>Un Petit d'un Petit</em></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
