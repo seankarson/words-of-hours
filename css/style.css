@@ -273,11 +273,11 @@ body {
 .cover .subtitle {
   margin: 0.9em 0 0;
   font-size: clamp(12.5px, 1.95vw, 19px);
-  max-width: 30ch;
+  max-width: 42ch;
   color: #f4e6c6;
   text-shadow: 0 2px 8px rgba(0,0,0,0.85);
 }
-.cover .subtitle em { font-style: italic; }
+.cover .subtitle em { font-style: italic; white-space: nowrap; }
 
 /* ---------- end page ---------- */
 .end {

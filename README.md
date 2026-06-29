@@ -1,6 +1,8 @@
 # Words of Hours
 
 A page-turning children's storybook, built as a static site for GitHub Pages.
+It is the presentation layer for a mystery-hunt–style puzzle created for the
+**Wafflehaus Puzzle Exchange**.
 
 - `index.html` — the book
 - `css/style.css` — storybook styling, frame & flip animation
