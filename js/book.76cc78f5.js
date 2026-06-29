@@ -4,30 +4,30 @@
 // label = the page-number medallion shown top-right
 // emoji = "The story continues on page <emoji>."
 const PLATES = [
-  { img: "page-1.jpg",  emoji: "☔️", label: 3 },
-  { img: "page-2.jpg",  emoji: "👵", label: 7 },
-  { img: "page-3.jpg",  emoji: "🪣", label: 5 },
-  { img: "page-4.jpg",  emoji: "👍", label: 5 },
-  { img: "page-5.jpg",  emoji: "🪖", label: 5 },
-  { img: "page-6.jpg",  emoji: "🥓", label: 9 },
-  { img: "page-7.jpg",  emoji: "👨‍🚒", label: 4 },
-  { img: "page-8.jpg",  emoji: "😋", label: 3 },
-  { img: "page-9.jpg",  emoji: "🎂", label: 7 },
-  { img: "page-10.jpg", emoji: "🎻", label: 4 },
-  { img: "page-11.jpg", emoji: "❤️", label: 3 },
-  { img: "page-12.jpg", emoji: "🍻", label: 2 },
-  { img: "page-13.jpg", emoji: "🕰️", label: 9 },
-  { img: "page-14.jpg", emoji: "🎀", label: 3 },
-  { img: "page-15.jpg", emoji: "❄️", label: 3 },
-  { img: "page-16.jpg", emoji: "🎡", label: 6 },
-  { img: "page-17.jpg", emoji: "🐮", label: 7 },
-  { img: "page-18.jpg", emoji: "🩺", label: 9 },
-  { img: "page-19.jpg", emoji: "🍓", label: 7 },
-  { img: "page-20.jpg", emoji: "😴", label: 2 },
-  { img: "page-21.jpg", emoji: "🔫", label: 3 },
-  { img: "page-22.jpg", emoji: "🔎", label: 7 },
-  { img: "page-23.jpg", emoji: "🗓️", label: 3 },
-  { img: "page-24.jpg", emoji: "🥢", label: 9 },
+  { img: "page-1.webp",  emoji: "☔️", label: 3 },
+  { img: "page-2.webp",  emoji: "👵", label: 7 },
+  { img: "page-3.webp",  emoji: "🪣", label: 5 },
+  { img: "page-4.webp",  emoji: "👍", label: 5 },
+  { img: "page-5.webp",  emoji: "🪖", label: 5 },
+  { img: "page-6.webp",  emoji: "🥓", label: 9 },
+  { img: "page-7.webp",  emoji: "👨‍🚒", label: 4 },
+  { img: "page-8.webp",  emoji: "😋", label: 3 },
+  { img: "page-9.webp",  emoji: "🎂", label: 7 },
+  { img: "page-10.webp", emoji: "🎻", label: 4 },
+  { img: "page-11.webp", emoji: "❤️", label: 3 },
+  { img: "page-12.webp", emoji: "🍻", label: 2 },
+  { img: "page-13.webp", emoji: "🕰️", label: 9 },
+  { img: "page-14.webp", emoji: "🎀", label: 3 },
+  { img: "page-15.webp", emoji: "❄️", label: 3 },
+  { img: "page-16.webp", emoji: "🎡", label: 6 },
+  { img: "page-17.webp", emoji: "🐮", label: 7 },
+  { img: "page-18.webp", emoji: "🩺", label: 9 },
+  { img: "page-19.webp", emoji: "🍓", label: 7 },
+  { img: "page-20.webp", emoji: "😴", label: 2 },
+  { img: "page-21.webp", emoji: "🔫", label: 3 },
+  { img: "page-22.webp", emoji: "🔎", label: 7 },
+  { img: "page-23.webp", emoji: "🗓️", label: 3 },
+  { img: "page-24.webp", emoji: "🥢", label: 9 },
 ];
 
 const COVER = { type: "cover" };
@@ -57,7 +57,7 @@ function buildVisual(i) {
   if (page.type === "cover") {
     const s = sheetEl("cover");
     s.innerHTML = `
-      <div class="cover-img" style="background-image:url('images/cover-image.jpg')"></div>
+      <div class="cover-img" style="background-image:url('images/cover-image.webp')"></div>
       <div class="scrim"></div>
       <div class="cover-frame"></div>
       <div class="cover-inner">
@@ -227,7 +227,7 @@ book.addEventListener("touchend", (e) => {
 });
 
 /* ---------- preload + init ---------- */
-["cover-image.jpg", ...PLATES.map((p) => p.img)].forEach((src) => {
+["cover-image.webp", ...PLATES.map((p) => p.img)].forEach((src) => {
   const im = new Image();
   im.src = "images/" + src;
 });
