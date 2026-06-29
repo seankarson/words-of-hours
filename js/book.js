@@ -43,7 +43,6 @@ const nextBtn = document.getElementById("nextBtn");
 const slider = document.getElementById("pageSlider");
 
 let idx = 0;
-let animating = false;
 
 /* ---------- builders ---------- */
 function sheetEl(className) {
@@ -106,41 +105,38 @@ function makePage(i) {
 
 /* ---------- render & flip ---------- */
 let flipEl = null;
+let flipTarget = null; // destination of the in-flight flip, or null
+let settleTimer = null;
+const FLIP_FALLBACK_MS = 1200; // safety net: a missed transitionend can't strand us
 
 function renderBase(i) {
   book.querySelectorAll(".page").forEach((e) => e.remove());
   book.appendChild(makePage(i));
 }
 
-function clearFlip() {
-  if (flipEl) {
-    flipEl.remove();
-    flipEl = null;
-  }
-  animating = false;
+// Instantly complete any in-flight flip, landing on its destination page.
+function finishFlip() {
+  if (settleTimer) { clearTimeout(settleTimer); settleTimer = null; }
+  if (flipEl) { flipEl.remove(); flipEl = null; }
+  if (flipTarget !== null) { idx = flipTarget; flipTarget = null; }
+  renderBase(idx);
 }
 
 function showStatic(i) {
-  clearFlip();
-  renderBase(i);
+  finishFlip();
   idx = i;
+  renderBase(i);
   updateUI();
 }
 
 function turn(dir) {
+  finishFlip(); // snap any in-progress flip to completion, then start fresh
   const target = idx + dir;
   if (target < 0 || target >= PAGES.length) return;
-
-  // interruptible: snap any in-progress flip to its current page, then start fresh
-  if (flipEl) {
-    clearFlip();
-    renderBase(idx);
-  }
-
   const old = idx;
+
   const flip = document.createElement("div");
   flip.className = "flipper";
-
   const front = document.createElement("div");
   front.className = "face front";
   const back = document.createElement("div");
@@ -150,7 +146,7 @@ function turn(dir) {
   if (dir > 0) {
     // forward: reveal target underneath; flip current page away to the left
     front.appendChild(buildVisual(old));
-    renderBase(target); // underneath = target
+    renderBase(target);
     book.appendChild(flip);
     requestAnimationFrame(() =>
       requestAnimationFrame(() => (flip.style.transform = "rotateY(-180deg)"))
@@ -166,27 +162,28 @@ function turn(dir) {
   }
 
   flipEl = flip;
-  animating = true;
-  idx = target; // optimistic: lets rapid clicks chain immediately
+  flipTarget = target;
   updateUI();
 
-  flip.addEventListener(
-    "transitionend",
-    () => {
-      if (flipEl === flip) {
-        renderBase(target);
-        flipEl = null;
-        animating = false;
-      }
-    },
-    { once: true }
-  );
+  const settle = () => {
+    if (flipEl !== flip) return; // superseded by a newer flip
+    if (settleTimer) { clearTimeout(settleTimer); settleTimer = null; }
+    flip.remove();
+    flipEl = null;
+    flipTarget = null;
+    idx = target;
+    renderBase(target);
+    updateUI();
+  };
+  flip.addEventListener("transitionend", settle, { once: true });
+  settleTimer = setTimeout(settle, FLIP_FALLBACK_MS);
 }
 
 function updateUI() {
-  prevBtn.disabled = idx === 0;
-  nextBtn.disabled = idx === PAGES.length - 1;
-  if (slider && slider.value !== String(idx)) slider.value = idx;
+  const shown = flipTarget !== null ? flipTarget : idx;
+  prevBtn.disabled = shown === 0;
+  nextBtn.disabled = shown === PAGES.length - 1;
+  if (slider && slider.value !== String(shown)) slider.value = shown;
 }
 
 /* ---------- input ---------- */
