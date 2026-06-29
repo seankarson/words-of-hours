@@ -65,7 +65,7 @@ function buildVisual(i) {
         <div class="bylines">
           <span class="byline"><b>Stories by Mother Goose</b></span>
           <span class="byline">Illustrations by Nano Banana</span>
-          <p class="subtitle">Featuring fan-favorite nursery rhyme classics like <em>Un Petit d'un Petit</em></p>
+          <p class="subtitle">Featuring fan-favorite nursery rhyme classics<br />like <em>Un Petit d'un Petit</em></p>
         </div>
       </div>`;
     return s;

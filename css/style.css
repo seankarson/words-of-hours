@@ -272,12 +272,12 @@ body {
 .cover .byline b { font-weight: 500; }
 .cover .subtitle {
   margin: 0.9em 0 0;
-  font-size: clamp(12.5px, 1.95vw, 19px);
-  max-width: 42ch;
+  font-size: clamp(12px, 1.8vw, 18px);
+  white-space: nowrap;
   color: #f4e6c6;
   text-shadow: 0 2px 8px rgba(0,0,0,0.85);
 }
-.cover .subtitle em { font-style: italic; white-space: nowrap; }
+.cover .subtitle em { font-style: italic; }
 
 /* ---------- end page ---------- */
 .end {
